@@ -82,12 +82,13 @@ void	ft_putnbr_base(unsigned int nbr, char *base)
 		}
 		while (base[size_base])
 			size_base++;
-		while (nbr)
+		while (nbr > size_base - 1)
 		{
 			nbr_final[i] = nbr % size_base;
 			nbr = nbr / size_base;
 			i++;
 		}
+		write(1, "0x", 2);
 		while (--i >= 0)
 			ft_putchar(base[nbr_final[i]]);
 	}
@@ -112,7 +113,7 @@ void	ft_check_and_print(va_list arg_p, char *format, int i)
 	else if (format[i] == 'X')
 		ft_putnbr_base(va_arg(arg_p, int), "0123456789ABCDEF");
 	else if (format[i] == 'p')
-		ft_putnbr_base(va_arg(arg_p, long long), "0123456789abcdef");
+		ft_putnbr_base(va_arg(arg_p, unsigned long long), "0123456789abcdef");
 }
 
 void	ft_printf(char *format, ...)
@@ -133,7 +134,10 @@ void	ft_printf(char *format, ...)
 			ft_putchar(format[i]);
 		i++;
 	}
+	va_end(arg_p);
 }
+
+// le return est le nombre de char ecrits
 
 int main()
 {
