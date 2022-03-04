@@ -103,14 +103,16 @@ void	ft_check_and_print(va_list arg_p, char *format, int i)
 		ft_putnbr(va_arg(arg_p, int));
 	else if (format[i] == 's')
 		ft_putstr(va_arg(arg_p, char *));
-    else if (format[i] == 'o')
+	else if (format[i] == 'o')
 		ft_putnbr_base(va_arg(arg_p, int), "01234567");
-    else if (format[i] == 'u')
+	else if (format[i] == 'u')
 		ft_putnbr_base(va_arg(arg_p, int), "0123456789");
-    else if (format[i] == 'x')
+	else if (format[i] == 'x')
 		ft_putnbr_base(va_arg(arg_p, int), "0123456789abcdef");
-    else if (format[i] == 'X')
+	else if (format[i] == 'X')
 		ft_putnbr_base(va_arg(arg_p, int), "0123456789ABCDEF");
+	else if (format[i] == 'p')
+		ft_putnbr_base(va_arg(arg_p, long long), "0123456789abcdef");
 }
 
 void	ft_printf(char *format, ...)
@@ -135,7 +137,10 @@ void	ft_printf(char *format, ...)
 
 int main()
 {
-    ft_printf("Hello world! %x \n", 187);
-    printf("Hello world! %x \n", 187);
+	char *y = "Je m'en vais tres loin";
+	int x = 24;
+    ft_printf("Hello world! %x\n%p\n", 187, &x);
+    printf("Hello world! %x\n%p\n", 187, &x);
+
     return 0;
 }
