@@ -41,24 +41,24 @@ void	ft_putnbr(int nb)
 int	check_base(char *base)
 {
 	int	i;
-	int	z;
+	int	j;
 
 	i = 0;
-	z = 0;
+	j = 0;
 	if (base[0] == '\0' || base[1] == '\0')
 		return (0);
 	while (base[i])
 	{
-		z = i + 1;
+		j = i + 1;
 		if (base[i] == '+' || base[i] == '-')
 			return (0);
 		if (base[i] < 32 || base[i] > 126)
 			return (0);
-		while (base[z])
+		while (base[j])
 		{
-			if (base[i] == base[z])
+			if (base[i] == base[j])
 				return (0);
-			z++;
+			j++;
 		}
 		i++;
 	}
@@ -68,29 +68,28 @@ int	check_base(char *base)
 void	ft_putnbr_base(unsigned int nbr, char *base)
 {
 	int	size_base;
-	int	nbr_final[100];
 	int	i;
+	int	ret[100];
 
-	i = 0;
 	size_base = 0;
+	i = 0;
 	if (check_base(base))
 	{
+		while (base[size_base] != '\0')
+			size_base++;
 		if (nbr < 0)
 		{
-			nbr = -nbr;
+			nbr *= -1;
 			ft_putchar('-');
 		}
-		while (base[size_base])
-			size_base++;
-		while (nbr > size_base - 1)
+		while (nbr != 0)
 		{
-			nbr_final[i] = nbr % size_base;
-			nbr = nbr / size_base;
+			ret[i] = nbr % size_base;
+			nbr /= size_base;
 			i++;
 		}
-		write(1, "0x", 2);
-		while (--i >= 0)
-			ft_putchar(base[nbr_final[i]]);
+		while (ret[--i])
+			ft_putchar(base[ret[i]]);
 	}
 }
 
@@ -141,10 +140,12 @@ void	ft_printf(char *format, ...)
 
 int main()
 {
-	char *y = "Je m'en vais tres loin";
+	char *y = "Je m'en vais loin";
+	char *z = "0101";
 	int x = 24;
-    ft_printf("Hello world! %x\n%p\n", 187, &x);
-    printf("Hello world! %x\n%p\n", 187, &x);
 
-    return 0;
+	ft_printf("%x\n%p\n", -187, &x);
+	printf("%x\n%p\n", -187, &x);
+
+	return 0;
 }
