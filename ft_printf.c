@@ -3,6 +3,15 @@
 #include <unistd.h>
 #include <stdarg.h>
 
+size_t	ft_strlen(char *str)
+{
+	int	i;
+
+	while (str[i])
+		i++;
+	return (i);
+}
+
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
@@ -82,7 +91,7 @@ void	ft_putnbr_base(unsigned int nbr, char *base)
 			nbr *= -1;
 			ft_putchar('-');
 		}
-		while (nbr != 0)
+		while (nbr > 0)
 		{
 			ret[i] = nbr % size_base;
 			nbr /= size_base;
@@ -91,6 +100,22 @@ void	ft_putnbr_base(unsigned int nbr, char *base)
 		while (ret[--i])
 			ft_putchar(base[ret[i]]);
 	}
+}
+
+void	ft_putaddr(unsigned long long nbr)
+{
+	int	i;
+	int	ret[100];
+
+	while (nbr)
+	{
+		ret[i] = nbr % 16;
+		nbr /= 16;
+		i++;
+	}
+	ft_putstr("0x");
+	while (--i)
+		ft_putchar("0123456789abcdef"[ret[i]]);
 }
 
 void	ft_check_and_print(va_list arg_p, char *format, int i)
@@ -112,28 +137,33 @@ void	ft_check_and_print(va_list arg_p, char *format, int i)
 	else if (format[i] == 'X')
 		ft_putnbr_base(va_arg(arg_p, int), "0123456789ABCDEF");
 	else if (format[i] == 'p')
-		ft_putnbr_base(va_arg(arg_p, unsigned long long), "0123456789abcdef");
+		ft_putaddr(va_arg(arg_p, unsigned long long));
 }
 
-void	ft_printf(char *format, ...)
+int	ft_printf(char *format, ...)
 {
 	va_list	arg_p;
-	int		i;
+	int		tab[1];
+	int		x;
 
-	i = 0;
+	tab[0] = 0;
+	x = 0;
 	va_start(arg_p, format);
-	while (format[i] != '\0')
+	while (format[tab[0]] != '\0')
 	{
-		if (format[i] == '%')
+		if (format[tab[0]] == '%')
 		{
-			i++;
-			ft_check_and_print(arg_p, format, i);
+			tab[0]++;
+			ft_check_and_print(arg_p, format, tab[0]);
+			x += 2;
 		}
 		else
-			ft_putchar(format[i]);
-		i++;
+			ft_putchar(format[tab[0]]);
+		tab[0]++;
 	}
 	va_end(arg_p);
+	tab[0] -= x;
+	return (tab[0]);
 }
 
 // le return est le nombre de char ecrits
@@ -144,8 +174,8 @@ int main()
 	char *z = "0101";
 	int x = 24;
 
-	ft_printf("%x\n%p\n", -187, &x);
-	printf("%x\n%p\n", -187, &x);
-
-	return 0;
+	ft_printf("%d\n", ft_printf("%x\n%p\n", -187, &x));
+	printf("%d", printf("%x\n%p\n", -187, &x));
+	printf("%d", printf("%s\n", y));
+	return (0);
 }
