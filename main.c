@@ -93,7 +93,7 @@ int	ft_putnbr_base_count(unsigned int nbr, char *base, int *n_char)
 			nbr /= size_base;
 			i++;
 		}
-		while (--i > 0)
+		while (--i >= 0)
 			ft_putchar_count(base[ret[i]], n_char);
 	}
 	return (*n_char);
@@ -122,7 +122,7 @@ void	ft_putnbr_base(unsigned int nbr, char *base)
 			nbr /= size_base;
 			i++;
 		}
-		while (--i > 0)
+		while (--i >= 0)
 			ft_putchar(base[ret[i]]);
 	}
 }
@@ -138,8 +138,9 @@ int	ft_putaddr_count(unsigned long long nbr, int *n_char)
 		nbr /= 16;
 		i++;
 	}
-	ft_putstr_count("0x", n_char);
-	while (--i > 0)
+	write(1, "0x", 2);
+	*n_char += 2;
+	while (--i >= 0)
 		ft_putchar_count("0123456789abcdef"[ret[i]], n_char);
 	return (*n_char);
 }
@@ -179,7 +180,7 @@ int	ft_check_and_print(va_list arg_p, char *format, int i, int *n_char)
 	else if (format[i] == 'X')
 		ft_putnbr_base_count(va_arg(arg_p, int), "0123456789ABCDEF", n_char);
 	else if (format[i] == 'p')
-		ft_putaddr(va_arg(arg_p, unsigned long long));
+		ft_putaddr_count(va_arg(arg_p, unsigned long long), n_char);
 	return (*n_char);
 }
 
@@ -206,7 +207,7 @@ int	ft_printf(char *format, ...)
 	va_end(arg_p);
 	return (tab[0]);
 }
-// putaddr marche mais putaddr en fait des siennes
+// putaddr marche mais putaddr_count en fait des siennes
 // le return est le nombre de char ecrits
 
 int main()
@@ -217,13 +218,12 @@ int main()
 	int tab[1];
 	tab[0] = 0;
 
-	ft_printf("%d\n", ft_printf("%x\n%p\n", -187, &x));
-	printf("%d\n", ft_printf("%x\n%p\n", -187, &x));
-	printf(" char %d \n", ft_putchar_count('c', &tab[0]));
-	printf(" str %d \n", ft_putstr_count("hello worlds", &tab[0]));
-	printf(" nbr %d \n", ft_putnbr_base_count(206767877, "01234567", &tab[0]));
-	ft_printf("%d", ft_printf("%p\n", &x));
-	ft_printf("%p\n", &x);
+	printf("%d\n", printf("%x\n%p\n", -187, &x));
+ 	printf("%d\n", ft_printf("%x\n%p\n", -187, &x));
+//	printf(" char %d \n", ft_putchar_count('c', &tab[0]));
+//	printf(" str %d \n", ft_putstr_count("hello worlds", &tab[0]));
+//	printf(" nbr %d \n", ft_putnbr_base_count(206767877, "01234567", &tab[0]));
+	ft_printf("%d\n", ft_printf("%p\n", &x));
 	printf("%p\n", &x);
 	return (0);
 }
