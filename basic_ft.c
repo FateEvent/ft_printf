@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:56:34 by faventur          #+#    #+#             */
-/*   Updated: 2022/03/07 16:01:22 by faventur         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:36:56 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ int	ft_putaddr_count(unsigned long long nbr, int *n_char)
 	int	ret[100];
 
 	i = 0;
+	if (nbr == 0)
+	{
+		ft_putstr_count("0x0", n_char);
+		return (*n_char);
+	}
 	while (nbr)
 	{
 		ret[i] = nbr % 16;

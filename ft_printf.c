@@ -6,13 +6,13 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:00:26 by faventur          #+#    #+#             */
-/*   Updated: 2022/03/07 16:03:36 by faventur         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:32:17 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_check_and_print(va_list arg_p, const char *format, int i, int *n_char)
+int	ft_check(va_list arg_p, const char *format, int i, int *n_char)
 {
 	if (format[i] == '%')
 		ft_putchar_count('%', n_char);
@@ -51,7 +51,7 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			ft_check_and_print(arg_p, format, i, &tab[0]);
+			ft_check(arg_p, format, i, &tab[0]);
 		}
 		else
 			ft_putchar_count(format[i], &tab[0]);
