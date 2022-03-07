@@ -15,11 +15,8 @@ int main()
 
 	ft_printf("%d\n", ft_printf("my ptf:  %p\n", &x));
 	printf("real ptf: %p\n", &x);
+
 	printf("real ptf: %d\n", printf("%d\n", -2147483648));
-	ft_printf("my ptf: %d\n", ft_printf("? %d\n", -2147483648));
-	printf("real ptf: %d\n", printf("%d\n", -2147483648));
-	ft_printf("my ptf: %d\n", ft_printf("? %d\n", -2147483648));
-	printf("lui %p %p ", 0, 0);
-	ft_printf("moi %p %p ", 0, 0);
+	ft_printf("my ptf: %d\n", ft_printf("%d\n", -2147483648));
 	return (0);
 }
