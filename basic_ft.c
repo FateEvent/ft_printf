@@ -6,38 +6,11 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:56:34 by faventur          #+#    #+#             */
-/*   Updated: 2022/03/07 15:03:51 by faventur         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:01:22 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static int	check_base(char *base)
-{
-	int	i;
-	int	z;
-
-	i = 0;
-	z = 0;
-	if (base[0] == '\0' || base[1] == '\0')
-		return (0);
-	while (base[i])
-	{
-		z = i + 1;
-		if (base[i] == '+' || base[i] == '-')
-			return (0);
-		if (base[i] < 32 || base[i] > 126)
-			return (0);
-		while (base[z])
-		{
-			if (base[i] == base[z])
-				return (0);
-			z++;
-		}
-		i++;
-	}
-	return (1);
-}
 
 int	ft_putaddr_count(unsigned long long nbr, int *n_char)
 {
