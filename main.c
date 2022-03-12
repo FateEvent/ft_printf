@@ -9,14 +9,10 @@ int main()
 	double x = 24;
 	int tab[1];
 	tab[0] = 0;
-
-	printf("%d\n", printf("real ptf: %x\n%p\n", -187, &x));
- 	printf("%d\n", ft_printf("my ptf: %x\n%p\n", -187, &x));
-
-	ft_printf("%d\n", ft_printf("my ptf:  %p\n", &x));
-	printf("real ptf: %p\n", &x);
-
-	printf("real ptf: %d\n", printf("%d\n", -2147483648));
-	ft_printf("my ptf: %d\n", ft_printf("%d\n", -2147483648));
+//	ft_printf("%d\n%i\n%d\n%i\n%d\n%i\n%d\n", 1, 5, 8, 9, 15, 90, -2147483648);
+	ft_printf("%o\n%o\n%o\n%o\n%o\n%o\n", 1, 5, 8, 9, 15, 90);
+	printf("%o\n%o\n%o\n%o\n%o\n%o\n", 1, 5, 8, 9, 15, 90);
+	ft_printf("%d\n", ft_printf("my ptf: %d\n%p\n%x\n%o\n", -2147483648, &x, -187, 15));
+	printf("%d\n", printf("real ptf: %d\n%p\n%x\n%o\n", -2147483648, &x, -187, 15));
 	return (0);
 }
