@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:56:39 by faventur          #+#    #+#             */
-/*   Updated: 2022/03/12 13:41:23 by faventur         ###   ########.fr       */
+/*   Updated: 2022/03/12 14:25:44 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,27 @@ int	ft_putnbr_count(int nbr, char *base, int *n_char)
 		x *= -1;
 		ft_putchar_count('-', n_char);
 	}
+	while (x > 0)
+	{
+		ret[i] = x % 10;
+		x /= 10;
+		i++;
+	}
+	while (--i >= 0)
+		ft_putchar_count(base[ret[i]], n_char);
+	return (*n_char);
+}
+
+int	ft_put_unsigned(int nbr, char *base, int *n_char)
+{
+	int				i;
+	int				ret[100];
+	unsigned int	x;
+
+	x = (unsigned int)nbr;
+	i = 0;
+	if (nbr == 0)
+		ft_putchar_count(0 + '0', n_char);
 	while (x > 0)
 	{
 		ret[i] = x % 10;
