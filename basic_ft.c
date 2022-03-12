@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:56:34 by faventur          #+#    #+#             */
-/*   Updated: 2022/03/12 11:12:11 by faventur         ###   ########.fr       */
+/*   Updated: 2022/03/12 13:40:56 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,27 +83,20 @@ int	ft_putoctals_count(int nbr, char *base, int *n_char)
 	return (*n_char);
 }
 
-int	ft_put_unsigned(unsigned int nbr, char *base, int *n_char)
+int	ft_put_unsigned(int nbr, char *base, int *n_char)
 {
-	int			size_base;
-	int			i;
-	int			ret[100];
-	long int	x;
+	int				i;
+	int				ret[100];
+	unsigned int	x;
 
-	size_base = 0;
+	x = (unsigned int)nbr;
 	i = 0;
-	x = nbr;
 	if (nbr == 0)
 		ft_putchar_count(0 + '0', n_char);
-	if (x < 0)
-	{
-		x *= -1;
-		ft_putchar_count('-', n_char);
-	}
 	while (x > 0)
 	{
-		ret[i] = x % size_base;
-		x /= size_base;
+		ret[i] = x % 10;
+		x /= 10;
 		i++;
 	}
 	while (--i >= 0)

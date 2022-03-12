@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:18:37 by faventur          #+#    #+#             */
-/*   Updated: 2022/03/12 11:09:55 by faventur         ###   ########.fr       */
+/*   Updated: 2022/03/12 13:30:33 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_putaddr_count(unsigned long long nbr, int *n_char);
 int		ft_putnbr_count(int nbr, char *base, int *n_char);
 int		ft_putoctals_count(int nbr, char *base, int *n_char);
 int		ft_puthexa(unsigned int nbr, char *base, int *n_char);
-int		ft_put_unsigned(unsigned int nbr, char *base, int *n_char);
+int		ft_put_unsigned(int nbr, char *base, int *n_char);
 int		ft_check(va_list arg_p, const char *format, int i, int *n_char);
 int		ft_printf(const char *format, ...);
 

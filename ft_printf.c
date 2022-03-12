@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:00:26 by faventur          #+#    #+#             */
-/*   Updated: 2022/03/12 11:11:34 by faventur         ###   ########.fr       */
+/*   Updated: 2022/03/12 13:34:29 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_check(va_list arg_p, const char *format, int i, int *n_char)
 	else if (format[i] == 'o')
 		ft_putoctals_count(va_arg(arg_p, int), "01234567", n_char);
 	else if (format[i] == 'u')
-		ft_put_unsigned(va_arg(arg_p, unsigned int), "0123456789", n_char);
+		ft_put_unsigned(va_arg(arg_p, int), "0123456789", n_char);
 	else if (format[i] == 'x')
 		ft_puthexa(va_arg(arg_p, unsigned int), "0123456789abcdef", n_char);
 	else if (format[i] == 'X')
