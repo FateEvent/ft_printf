@@ -6,6 +6,7 @@ The goal is to implement a function named `ft_printf()` that mimics the behavior
 
 The mandatory part requests that the following conversions be supported: `c`, `s`, `p`, `d`, `i`, `u`, `x`, `X`, `%`.
 
+![ft_printf function ft_addr_count](varia/img/image.png)
 
 ### Getting Started
 
@@ -16,6 +17,6 @@ To use the ft_printf project:
 - Test the custom `printf()` function with various inputs to ensure its accuracy.
 
 
-### Bonus Features (Optional)
+### To Do: Implementing Bonus Features
 
 I'm considering adding additional features to the ft_printf function included support for optional conversions, such as flags `-0.` and `# +`.
