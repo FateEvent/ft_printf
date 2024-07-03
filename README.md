@@ -19,4 +19,4 @@ To use the ft_printf project:
 
 ### To Do: Implementing Bonus Features
 
-I'm considering adding additional features to the ft_printf function included support for optional conversions, such as flags `-0.` and `# +`.
+I'm considering adding additional features to the `ft_printf()` function included support for optional conversions, such as management of flags such as `-0.` and `# +`.
